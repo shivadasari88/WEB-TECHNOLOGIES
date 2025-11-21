@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>User Details Form</title> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 30px; 
+        } 
+        label, input, button { 
+            display: block; 
+            margin: 5px 0; 
+        } 
+        #result { 
+            margin-top: 20px; 
+            font-weight: bold; 
+        } 
+        .error { 
+            color: red; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <h2>User Details Form</h2> 
+ 
+<form id="userForm"> 
+    <label for="name">Name:</label> 
+    <input type="text" id="name" placeholder="Enter name"> 
+ 
+    <label for="email">Email:</label> 
+    <input type="email" id="email" placeholder="Enter email"> 
+ 
+    <label for="age">Age:</label> 
+    <input type="number" id="age" placeholder="Enter age"> 
+ 
+    <label for="luckyNumber">Lucky Number (1-100):</label> 
+    <input type="number" id="luckyNumber" placeholder="Enter lucky number"> 
+ 
+    <button type="button" onclick="submitForm()">Submit</button> 
+</form> 
+ 
+<div id="result"></div> 
+ 
+<script> 
+    function submitForm() { 
+        const name = document.getElementById("name").value.trim(); 
+        const email = document.getElementById("email").value.trim(); 
+        const age = parseInt(document.getElementById("age").value); 
+        const luckyNumber = parseInt(document.getElementById("luckyNumber").value); 
+        const resultDiv = document.getElementById("result"); 
+ 
+        if (name === "" || email === "" || isNaN(age) || isNaN(luckyNumber)) { 
+            resultDiv.innerHTML = '<span class="error">Please fill in all fields correctly.</span>'; 
+            return; 
+        } 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+        if (!emailRegex.test(email)) { 
+            resultDiv.innerHTML = '<span class="error">Please enter a valid email address.</span>'; 
+            return; 
+        } 
+        if (luckyNumber < 1 || luckyNumber > 100) { 
+            resultDiv.innerHTML = '<span class="error">Lucky number must be between 1 and 100.</span>'; 
+            return; 
+        } 
+        const userDetails = { 
+            Name: name, 
+            Email: email, 
+            Age: age, 
+            LuckyNumber: luckyNumber 
+        };
+
+            let output = "<h3>User Details:</h3><ul>"; 
+        for (const key in userDetails) { 
+            output += `<li><strong>${key}:</strong> ${userDetails[key]}</li>`; 
+        } 
+        output += "</ul>"; 
+ 
+        resultDiv.innerHTML = output; 
+ 
+    } 
+</script> 
+ 
+</body> 
+</html> 

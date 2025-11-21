@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Group Members List</title> 
+</head> 
+ 
+<body> 
+ 
+    <h3>Members of my Group are</h3> 
+ 
+    <ol id="list"> 
+ 
+    </ol> 
+ 
+    <input type="button" onclick="f1()" value="Populate list"> 
+ 
+    <script> 
+        function f1() { 
+ 
+            var names = ["Kavita", "Anita", "Sunita", "Babita"]; 
+ 
+            var list = document.querySelector("#list"); 
+ 
+            while (list.firstChild) { 
+                list.removeChild(list.firstChild); 
+            } 
+ 
+            for (var i = 0; i < names.length; i++) { 
+                var li = document.createElement("li");       
+                var text = document.createTextNode(names[i]);  
+                li.appendChild(text);                       
+                list.appendChild(li);                        
+            } 
+        } 
+    </script> 
+ 
+</body> 
+</html>
