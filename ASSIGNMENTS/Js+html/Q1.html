@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function calculateCircle() {
+                const radius = parseFloat(document.getElementById('Radius').value);
+
+                if(isNaN(radius) || radius <=0){
+                    alert("please enter a valid positive radius.")
+                    return;
+                }
+
+                const area = Math.PI * radius * radius;
+                const Circumference = 2 * Math.PI * radius;
+
+                document.getElementById('areaOutput').innerText = area.toFixed(2)
+                document.getElementById('CircumferenceOutput').textContent = Circumference.toFixed(2)
+            }
+        </script>
+        
+    </head>
+    <body>
+        <div>
+                <lable>Enter Radius : </lable><input type="number" id="Radius" >
+               
+
+                <button onclick="calculateCircle()">Display</button>
+                <br><br>
+                
+                <p>Area : <span id="areaOutput"></span></p>
+                <p>Circumference : <span id="CircumferenceOutput"></span></p>
+
+        </div>
+        
+    </body>
+</html>
