@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Multiplication Table</title> 
+    <script> 
+        function generateTable() { 
+            var start = parseInt(document.getElementById("start").value); 
+            var end = parseInt(document.getElementById("end").value); 
+            var mul = parseInt(document.getElementById("mul").value); 
+ 
+            var output = ""; 
+ 
+            for (var i = start; i <= end; i++) { 
+                output += i + " times " + mul + " = " + (i * mul) + "\n"; 
+            } 
+ 
+            document.getElementById("result").value = output; 
+        } 
+ 
+        function resetForm() { 
+            document.getElementById("start").value = ""; 
+            document.getElementById("end").value = ""; 
+            document.getElementById("mul").value = ""; 
+            document.getElementById("result").value = ""; 
+        } 
+    </script> 
+</head> 
+ 
+<body> 
+ 
+    <h3>Create Multiplication Table</h3> 
+ 
+    Start Number:  
+    <input type="text" id="start" value="1"> 
+ 
+    &nbsp;&nbsp; End Number: 
+    <input type="text" id="end" value="10"> 
+ 
+    &nbsp;&nbsp; Multiply By: 
+    <input type="text" id="mul" value="2"> 
+ 
+    <br><br> 
+ 
+    <button onclick="generateTable()">Times Table</button> 
+    <br><br> 
+ 
+    <button onclick="resetForm()">Reset</button> 
+    <br><br> 
+ 
+    <textarea id="result" rows="10" cols="50" style="overflow:auto;"></textarea> 
+ 
+</body> 
+</html> 

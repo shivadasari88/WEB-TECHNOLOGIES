@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Sum of Digits</title> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 30px; 
+        } 
+        label, input, button { 
+            display: block; 
+            margin: 5px 0; 
+        } 
+        #result { 
+            margin-top: 20px; 
+            font-weight: bold; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+<h2>Sum of Digits Calculator</h2> 
+ 
+<form id="digitForm"> 
+    <label for="number">Enter a positive integer less than 1000:</label> 
+    <input type="number" id="number" placeholder="Enter number"> 
+    <button type="button" onclick="calculateSum()">Calculate Sum</button> 
+</form> 
+ 
+<div id="result"></div> 
+ 
+<script> 
+    function calculateSum() { 
+        const numInput = document.getElementById("number"); 
+        const num = parseInt(numInput.value); 
+        const resultDiv = document.getElementById("result"); 
+ 
+        if (isNaN(num) || num <= 0 || num >= 1000) { 
+            resultDiv.textContent = `Entered number is out of range`; 
+            return; 
+        } 
+ 
+        let sum = 0; 
+        let temp = num; 
+        while (temp > 0) { 
+            sum += temp % 10; 
+            temp = Math.floor(temp / 10); 
+        } 
+ 
+        resultDiv.textContent = `Sum of the digits of ${num} is ${sum}`; 
+    } 
+</script> 
+ 
+</body> 
+</html>
