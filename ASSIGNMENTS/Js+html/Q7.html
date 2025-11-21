@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Zebra Stripe Table</title> 
+    <style> 
+ 
+        #studentTable { 
+            border-collapse: collapse;  
+            width: 50%; 
+            margin: 20px auto; 
+            font-family: Arial, sans-serif; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+        } 
+ 
+        #studentTable th, #studentTable td { 
+            border: 1px solid #dddddd; 
+            padding: 12px 15px; 
+            text-align: left; 
+        } 
+ 
+        #studentTable th { 
+            background-color: #009879; 
+            color: white; 
+            text-transform: uppercase; 
+        } 
+ 
+        .striped { 
+            background-color: #f3f3f3;  
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+    <table id="studentTable"> 
+        <thead> 
+            <tr> 
+                <th>Student name</th> 
+                <th>Course</th> 
+                <th>Grade</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            <tr> 
+                <td>Manisha Patel</td> 
+                <td>DAC</td> 
+                <td>B</td> 
+            </tr> 
+            <tr> 
+                <td>Savita Rao</td> 
+                <td>DITISS</td> 
+                <td>B</td> 
+            </tr> 
+            <tr> 
+                <td>Arnav Patil</td> 
+                <td>DIoT</td> 
+                <td>A</td> 
+            </tr> 
+            <tr> 
+                <td>Anita Kapoor</td> 
+                <td>DAC</td> 
+                <td>A</td> 
+            </tr> 
+        </tbody> 
+    </table> 
+ 
+    <script> 
+         
+        function applyZebraStripes() { 
+            const tableBody = document.querySelector('#studentTable tbody'); 
+ 
+            const rows = tableBody.getElementsByTagName('tr'); 
+ 
+            for (let i = 0; i < rows.length; i++) { 
+ 
+                if (i % 2 !== 0) { 
+ 
+                    rows[i].classList.add('striped'); 
+                } 
+            } 
+        } 
+        document.addEventListener('DOMContentLoaded', applyZebraStripes); 
+    </script> 
+ 
+</body> 
+</html>

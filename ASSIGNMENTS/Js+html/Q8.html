@@ -1,0 +1,148 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Account Information Display</title> 
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <style> 
+ 
+        #accounts-container { 
+            max-width: 900px; 
+            margin: 40px auto; 
+        } 
+        #accountTable { 
+ 
+            border-collapse: collapse;  
+            width: 100%; 
+        } 
+        #accountTable th, #accountTable td { 
+            text-align: left; 
+            padding: 12px 15px; 
+            border: 1px solid #e5e7eb;  
+        } 
+ 
+        #accountTable tbody tr:nth-child(even) { 
+            background-color: #f9fafb;  
+        } 
+    </style> 
+</head> 
+<body class="bg-gray-50 font-sans"> 
+ 
+    <div id="accounts-container" class="p-6 bg-white rounded-xl shadow-2xl"> 
+        <h1 class="text-3xl font-extrabold text-blue-800 mb-6 border-b-4 border
+blue-200 pb-2"> 
+            Welcome to Javascript 
+        </h1> 
+        <div class="mb-8 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-500"> 
+            <h2 class="text-xl font-semibold text-gray-700 mb-2">Total Bank 
+Balance</h2> 
+            <p id="totalBalance" class="text-4xl font-bold text-yellow-700"> 
+                Loading... 
+            </p> 
+        </div> 
+ 
+        <h2 class="text-2xl font-semibold text-gray-700 mb-4 border-b-2 pb-1"> 
+            Account Details 
+        </h2> 
+        <table id="accountTable" class="min-w-full"> 
+            <thead> 
+                <tr class="bg-blue-600 text-white uppercase text-sm leading-normal"> 
+                    <th class="py-3 px-6">Account No</th> 
+                    <th class="py-3 px-6">Account Name</th> 
+                    <th class="py-3 px-6">Account Balance (INR)</th> 
+                </tr> 
+            </thead> 
+            <tbody id="tableBody" class="text-gray-600 text-sm font-light"> 
+ 
+            </tbody> 
+        </table> 
+    </div> 
+ 
+    <script> 
+ 
+        const bankData = { 
+            accounts: [ 
+                { accountNo: 1001, accountName: "Soha", accountBalance: 90000 }, 
+                { accountNo: 1002, accountName: "Shrilata", accountBalance: 80000 }, 
+                { accountNo: 1003, accountName: "Sunil", accountBalance: 100000 }, 
+                { accountNo: 1004, accountName: "Anita", accountBalance: 40000 }, 
+                { accountNo: 1005, accountName: "Mohan", accountBalance: 55000 } 
+            ] 
+        }; 
+ 
+        function displayTotalBalance(accounts) { 
+            const totalBalanceElement = document.getElementById('totalBalance'); 
+ 
+            if (!totalBalanceElement) { 
+                console.error("Error: Could not find the element with ID 'totalBalance'."); 
+                return;  
+            } 
+ 
+            const total = accounts.reduce((accumulator, account) => { 
+                return accumulator + account.accountBalance; 
+            }, 0);  
+ 
+            console.log("Calculated Total Balance:", total); 
+ 
+            try { 
+                const formattedTotal = total.toLocaleString('en-IN', { 
+                    style: 'currency', 
+                    currency: 'INR', 
+                    minimumFractionDigits: 0 
+                }); 
+ 
+                totalBalanceElement.textContent = formattedTotal; 
+            } catch (error) { 
+                totalBalanceElement.textContent = `INR ${total.toFixed(0)}`; 
+                console.error("Formatting error, using fallback format:", error); 
+            } 
+        } 
+ 
+        function displayAccountTable(accounts) { 
+            const tableBody = document.getElementById('tableBody'); 
+ 
+            tableBody.innerHTML = '';  
+ 
+            accounts.forEach(account => { 
+ 
+                const row = document.createElement('tr'); 
+                row.classList.add('hover:bg-gray-100', 'transition', 'duration150'); 
+ 
+                const accNoCell = document.createElement('td'); 
+                accNoCell.textContent = account.accountNo; 
+                accNoCell.classList.add('py-3', 'px-6', 'font-medium', 'text-gray900'); 
+ 
+                const accNameCell = document.createElement('td'); 
+                accNameCell.textContent = account.accountName; 
+                accNameCell.classList.add('py-3', 'px-6'); 
+ 
+                const accBalanceCell = document.createElement('td'); 
+                const formattedBalance = account.accountBalance.toLocaleString('enIN', { 
+                    style: 'currency', 
+                    currency: 'INR', 
+                    minimumFractionDigits: 0 
+                }); 
+                accBalanceCell.textContent = formattedBalance; 
+                accBalanceCell.classList.add('py-3', 'px-6', 'font-semibold', 'textright'); 
+ 
+                row.appendChild(accNoCell); 
+                row.appendChild(accNameCell); 
+                row.appendChild(accBalanceCell); 
+                tableBody.appendChild(row); 
+            }); 
+        } 
+        document.addEventListener('DOMContentLoaded', () => { 
+ 
+            console.log("Initialization started.");  
+            const accounts = bankData.accounts; 
+ 
+            displayTotalBalance(accounts); 
+            displayAccountTable(accounts); 
+            console.log("Initialization complete."); 
+        }); 
+         
+    </script> 
+ 
+</body> 
+</html> 
