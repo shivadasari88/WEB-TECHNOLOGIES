@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Display Member Names</title> 
+    <style> 
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 30px; 
+        } 
+        #result { 
+            margin-top: 20px; 
+            font-weight: bold; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+<h2>Member Names</h2> 
+ 
+<div id="result"></div> 
+ 
+<script> 
+    var names = ['John', 'Steve', 'Ben', 'Damin', 'Ian']; 
+ 
+    var upperNames = names.map(function(name) { 
+        return name.toUpperCase(); 
+    }); 
+ 
+    var resultString = upperNames.join(', '); 
+ 
+    document.getElementById("result").textContent = resultString; 
+</script> 
+ 
+</body> 
+</html>
