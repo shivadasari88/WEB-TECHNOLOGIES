@@ -1,19 +1,23 @@
-
-import './App.css'
-import ExpenseItem from './components/ExpenseItem'
+import './App.css';
+import NewExpense from './components/NewExpense';
 
 function App() {
+  const expenses = [
+    {title:"Shopping", amount:2000, date:new Date(2022, 1, 2)},
+    {title:"Groceries", amount:7000, date:new Date(2022, 5, 6)},
+    {title:"Movies", amount:4000, date:new Date(2022, 1, 5)}
+  ]
+
+  const addExpenseHandler = expense => {
+    console.log("In App component ", expense)
+  }
 
   return (
-   <div className='App'>
-    <h1>Lets get started</h1>
-    <ExpenseItem expDate="20-12-2020" expTitle="Mytra shoping" expAmount="2500"/>
-    <ExpenseItem expDate="26-12-2020" expTitle="amazon" expAmount="2000"/>
-    <ExpenseItem expDate="26-12-2020" expTitle="flipkart shoping" expAmount="3000"/>
-
-   </div>
-  )
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      //rest of  your code
+    </div>
+  );
 }
 
-export default App
-
+export default App;
