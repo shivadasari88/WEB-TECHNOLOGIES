@@ -10,3 +10,4 @@ console.log("Error writing file:", err);
 console.log("names.txt written successfully!"); 
 } 
 }); 
+
