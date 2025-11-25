@@ -1,0 +1,20 @@
+[
+  {
+    "customer": "Anil Patil",
+    "address": "add 321",
+    "ph no": "9876543210",
+    "credit-rating": "8"
+  },
+  {
+    "customer": "Neeta Kulkarni",
+    "address": "flat6, nightstreet",
+    "ph no": "9999888777",
+    "credit-rating": "7"
+  },
+  {
+    "customer": "Kavita Menon",
+    "address": "B802, Pune",
+    "ph no": "7123456789",
+    "credit-rating": "9"
+  }
+]
